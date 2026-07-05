@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { KeyRound, Mail, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -62,33 +62,27 @@ const Login = () => {
             <label htmlFor="email-address-input" className="field-label">
               Email
             </label>
-            <div className="field-input-control">
-              <Mail className="field-prefix-icon" size={16} />
-              <input
-                id="email-address-input"
-                type="text"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="field-text-input"
-              />
-            </div>
+            <input
+              id="email-address-input"
+              type="text"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="field-text-input"
+            />
           </div>
 
           <div className="login-form-field">
             <label htmlFor="password-field-input" className="field-label">
               Password
             </label>
-            <div className="field-input-control">
-              <KeyRound className="field-prefix-icon" size={16} />
-              <input
-                id="password-field-input"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="field-text-input"
-              />
-            </div>
+            <input
+              id="password-field-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="field-text-input"
+            />
           </div>
 
           <button
