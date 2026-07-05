@@ -1115,62 +1115,40 @@ td {
 .not-found-page-wrapper {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--bg-base);
   padding: 1.5rem;
-}
-
-.not-found-card {
   text-align: center;
-  max-width: 440px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--border-radius-lg);
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.not-found-brand-icon {
-  color: var(--color-warning);
+  gap: 0.5rem;
 }
 
 .not-found-code {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 4.5rem;
-  line-height: 1;
-  color: var(--primary-solid);
+  font-size: 3rem;
+  line-height: 1.1;
+  color: #111827;
 }
 
 .not-found-subtitle {
-  font-size: 1.35rem;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.not-found-detailed-text {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--text-secondary);
+  margin-bottom: 0.25rem;
 }
 
 .not-found-home-link {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
-  background-color: var(--primary-solid);
-  color: var(--text-on-accent);
+  font-size: 0.95rem;
   font-weight: 600;
-  border-radius: var(--border-radius-sm);
-  margin-top: 0.75rem;
-  transition: all var(--transition-fast);
+  color: var(--primary-solid);
+  transition: color var(--transition-fast);
 }
 
 .not-found-home-link:hover {
-  background-color: var(--primary-solid-hover);
+  color: var(--primary-solid-hover);
+  text-decoration: underline;
 }
 
 /* --- Common Keyframes --- */
