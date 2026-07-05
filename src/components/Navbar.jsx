@@ -16,7 +16,6 @@ const Navbar = () => {
     <header className="navbar-header">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand" aria-label="Go to dashboard home">
-          <Briefcase className="brand-icon" size={22} />
           <span className="brand-name">Go Business</span>
         </Link>
         

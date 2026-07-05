@@ -214,12 +214,12 @@ const Dashboard = () => {
             ) : (
               metrics.map((metric) => (
                 <div key={metric.id} className="metric-card">
-                  <div className="metric-card-info">
-                    <span className="metric-card-label">{metric.label}</span>
-                    <span className="metric-card-value">{metric.value}</span>
-                  </div>
                   <div className="metric-card-icon-container">
                     {getMetricIcon(metric.id)}
+                  </div>
+                  <div className="metric-card-info">
+                    <span className="metric-card-value">{metric.value}</span>
+                    <span className="metric-card-label">{metric.label}</span>
                   </div>
                 </div>
               ))
@@ -227,123 +227,106 @@ const Dashboard = () => {
           </div>
         </section>
 
-        <div className="dashboard-grid-layout">
-          {/* Service Summary Section */}
-          <section 
-            className="dashboard-section" 
-            role="region" 
-            aria-label="Service summary"
-          >
-            <div className="section-header">
-              <h2 className="section-title">Service summary</h2>
-            </div>
+        {/* Service Summary Section */}
+        <section 
+          className="dashboard-section" 
+          role="region" 
+          aria-label="Service summary"
+        >
+          <div className="section-header">
+            <h2 className="section-title">Service summary</h2>
+          </div>
 
-            <div className="service-summary-card">
-              <div className="table-responsive-container">
-                <table className="summary-data-table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Service</th>
-                      <th scope="col">Your Referrals</th>
-                      <th scope="col">Active Referrals</th>
-                      <th scope="col">Total Ref. Earnings</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {loading && !serviceSummary ? (
-                      <tr>
-                        <td colSpan="4">
-                          <div className="table-loading-row">
-                            <Loader size={16} className="spinner-icon-active" />
-                            <span>Loading summaries...</span>
-                          </div>
-                        </td>
-                      </tr>
-                    ) : serviceSummary ? (
-                      <tr>
-                        <td data-label="Service">{serviceSummary.service}</td>
-                        <td data-label="Your Referrals">{serviceSummary.yourReferrals}</td>
-                        <td data-label="Active Referrals">{serviceSummary.activeReferrals}</td>
-                        <td data-label="Total Ref. Earnings" className="cell-earnings-value">
-                          {serviceSummary.totalRefEarnings}
-                        </td>
-                      </tr>
-                    ) : (
-                      <tr>
-                        <td colSpan="4" className="empty-table-cell">No summary data available</td>
-                      </tr>
-                    )}
-                  </tbody>
-                </table>
+          <div className="service-summary-grid">
+            <div className="summary-card-item">
+              <span className="summary-item-label">Service</span>
+              <span className="summary-item-value service-highlight">
+                {serviceSummary ? serviceSummary.service : '—'}
+              </span>
+            </div>
+            <div className="summary-card-item">
+              <span className="summary-item-label">Your Referrals</span>
+              <span className="summary-item-value">
+                {serviceSummary ? serviceSummary.yourReferrals : '—'}
+              </span>
+            </div>
+            <div className="summary-card-item">
+              <span className="summary-item-label">Active Referrals</span>
+              <span className="summary-item-value">
+                {serviceSummary ? serviceSummary.activeReferrals : '—'}
+              </span>
+            </div>
+            <div className="summary-card-item">
+              <span className="summary-item-label">Total Ref. Earnings</span>
+              <span className="summary-item-value earnings-highlight">
+                {serviceSummary ? serviceSummary.totalRefEarnings : '—'}
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* Share Referral Section */}
+        <section 
+          className="dashboard-section" 
+          role="region" 
+          aria-label="Share referral"
+        >
+          <div className="section-header">
+            <h2 className="section-title">Refer friends and earn more</h2>
+          </div>
+
+          <div className="share-referral-card">
+            <div className="share-field-group">
+              <div className="share-field-header">
+                <label htmlFor="share-referral-link-input" className="share-field-label">
+                  Your Referral Link
+                </label>
+                {copiedLink && <span className="copy-success-indicator">Copied!</span>}
+              </div>
+              <div className="share-input-control">
+                <input
+                  id="share-referral-link-input"
+                  type="text"
+                  readOnly
+                  value={referralMeta.link || ''}
+                  className="share-readonly-input"
+                />
+                <button
+                  type="button"
+                  onClick={handleCopyLink}
+                  className="btn-share-copy"
+                >
+                  Copy
+                </button>
               </div>
             </div>
-          </section>
 
-          {/* Share Referral Section */}
-          <section 
-            className="dashboard-section" 
-            role="region" 
-            aria-label="Share referral"
-          >
-            <div className="section-header">
-              <h2 className="section-title">Refer friends and earn more</h2>
-            </div>
-
-            <div className="share-referral-card">
-              <div className="share-field-group">
-                <div className="share-field-header">
-                  <label htmlFor="share-referral-link-input" className="share-field-label">
-                    Your Referral Link
-                  </label>
-                  {copiedLink && <span className="copy-success-indicator">Copied!</span>}
-                </div>
-                <div className="share-input-control">
-                  <input
-                    id="share-referral-link-input"
-                    type="text"
-                    readOnly
-                    value={referralMeta.link || ''}
-                    className="share-readonly-input"
-                  />
-                  <button
-                    type="button"
-                    onClick={handleCopyLink}
-                    className="btn-share-copy"
-                  >
-                    {copiedLink ? <Check size={16} /> : <Copy size={16} />}
-                    <span>Copy</span>
-                  </button>
-                </div>
+            <div className="share-field-group">
+              <div className="share-field-header">
+                <label htmlFor="share-referral-code-input" className="share-field-label">
+                  Your Referral Code
+                </label>
+                {copiedCode && <span className="copy-success-indicator">Copied!</span>}
               </div>
-
-              <div className="share-field-group">
-                <div className="share-field-header">
-                  <label htmlFor="share-referral-code-input" className="share-field-label">
-                    Your Referral Code
-                  </label>
-                  {copiedCode && <span className="copy-success-indicator">Copied!</span>}
-                </div>
-                <div className="share-input-control">
-                  <input
-                    id="share-referral-code-input"
-                    type="text"
-                    readOnly
-                    value={referralMeta.code || ''}
-                    className="share-readonly-input"
-                  />
-                  <button
-                    type="button"
-                    onClick={handleCopyCode}
-                    className="btn-share-copy"
-                  >
-                    {copiedCode ? <Check size={16} /> : <Copy size={16} />}
-                    <span>Copy</span>
-                  </button>
-                </div>
+              <div className="share-input-control">
+                <input
+                  id="share-referral-code-input"
+                  type="text"
+                  readOnly
+                  value={referralMeta.code || ''}
+                  className="share-readonly-input"
+                />
+                <button
+                  type="button"
+                  onClick={handleCopyCode}
+                  className="btn-share-copy"
+                >
+                  Copy
+                </button>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
 
         {/* All Referrals Section */}
         <section className="dashboard-section all-referrals-table-section">

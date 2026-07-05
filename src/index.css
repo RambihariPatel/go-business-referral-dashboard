@@ -426,8 +426,9 @@ button, input, select {
   border-radius: var(--border-radius-md);
   padding: 1.5rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
 }
@@ -446,10 +447,8 @@ button, input, select {
 
 .metric-card-label {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .metric-card-value {
@@ -460,70 +459,61 @@ button, input, select {
 }
 
 .metric-card-icon-container {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--border-radius-sm);
-  background-color: rgba(88, 80, 236, 0.08);
+  background-color: rgba(88, 80, 236, 0.1);
   color: var(--primary-solid);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Dashboard Split Grid (Service Summary & Share Referral) */
-.dashboard-grid-layout {
+/* Service Summary Section Grid Layout */
+.service-summary-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
-@media (min-width: 1024px) {
-  .dashboard-grid-layout {
-    grid-template-columns: 3fr 2fr;
+@media (min-width: 768px) {
+  .service-summary-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Service Summary Table */
-.service-summary-card {
+.summary-card-item {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--border-radius-md);
-  padding: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   box-shadow: var(--shadow-sm);
-  height: 100%;
 }
 
-/* Tables Styling Base */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-th {
-  font-size: 0.8rem;
+.summary-item-label {
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
-  padding: 0.875rem 1rem;
-  border-bottom: 2px solid var(--border-light);
 }
 
-td {
-  padding: 1rem;
-  font-size: 0.95rem;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.summary-data-table td {
+.summary-item-value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
-.cell-earnings-value {
-  font-family: var(--font-display);
-  font-weight: 600;
-  color: var(--color-success) !important;
+.service-highlight {
+  color: var(--primary-solid);
+}
+
+.earnings-highlight {
+  color: var(--text-primary);
 }
 
 /* Share Referral Details styling */
@@ -531,12 +521,17 @@ td {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--border-radius-md);
-  padding: 1.5rem;
+  padding: 1.75rem;
   box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .share-referral-card {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .share-field-group {
@@ -583,10 +578,10 @@ td {
 .btn-share-copy {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  justify-content: center;
   background-color: var(--primary-solid);
   color: var(--text-on-accent);
-  padding: 0.625rem 1rem;
+  padding: 0.625rem 1.25rem;
   border-radius: var(--border-radius-sm);
   font-weight: 600;
   font-size: 0.9rem;
@@ -596,6 +591,11 @@ td {
 
 .btn-share-copy:hover {
   background-color: var(--primary-solid-hover);
+}
+
+.cell-profit-value {
+  color: var(--primary-solid) !important;
+  font-weight: 600;
 }
 
 /* --- Referrals Table with Filters --- */
