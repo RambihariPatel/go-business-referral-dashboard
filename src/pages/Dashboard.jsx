@@ -70,7 +70,8 @@ const Dashboard = () => {
       const json = await response.json();
 
       if (response.ok && json.success) {
-        const payload = json.data;
+        // Works whether fields are nested inside json.data or flat beside it
+        const payload = json.data || json;
         if (payload.metrics) setMetrics(payload.metrics);
         if (payload.serviceSummary) setServiceSummary(payload.serviceSummary);
         if (payload.referral) setReferralMeta(payload.referral);
