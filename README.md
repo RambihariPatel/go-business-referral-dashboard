@@ -6,11 +6,11 @@ A modern, responsive referral management dashboard built using **React.js**. Thi
 
 # Live Demo
 
-**Vercel:** *Add your deployed URL here*
+https://go-business-referral-dashboard-kohl.vercel.app/login
 
 # GitHub Repository
 
-*Add your GitHub repository link here*
+https://github.com/RambihariPatel/go-business-referral-dashboard
 
 ---
 
