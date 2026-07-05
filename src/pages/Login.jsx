@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { KeyRound, Mail, AlertCircle, Loader2 } from 'lucide-react';
+import { KeyRound, Mail, AlertCircle } from 'lucide-react';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   // Redirect authenticated users to the home dashboard
   const token = Cookies.get('jwt_token');
@@ -19,7 +18,6 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
-    setIsLoading(true);
 
     try {
       const response = await fetch('https://v9fes04dwf.execute-api.eu-north-1.amazonaws.com/api/auth/signin', {
@@ -41,8 +39,6 @@ const Login = () => {
       }
     } catch (err) {
       setErrorMessage('Invalid email or password');
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -99,14 +95,7 @@ const Login = () => {
             type="submit"
             className="login-submit-button"
           >
-            {isLoading ? (
-              <>
-                <Loader2 size={16} className="button-spinner-icon" />
-                <span>Signing in...</span>
-              </>
-            ) : (
-              'Sign in'
-            )}
+            Sign in
           </button>
         </form>
       </div>
