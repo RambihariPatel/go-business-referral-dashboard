@@ -93,7 +93,6 @@ const ReferralDetail = () => {
         <div className="detail-view-container">
           <div className="back-navigation">
             <Link to="/" className="btn-back-dashboard" aria-label="Back to dashboard">
-              <ArrowLeft size={16} className="btn-back-arrow" />
               <span>← Back to dashboard</span>
             </Link>
           </div>
@@ -114,50 +113,50 @@ const ReferralDetail = () => {
           )}
 
           {!loading && !errorText && referral && (
-            <div className="referral-detail-card">
-              <div className="detail-card-header">
-                <h1 className="detail-card-main-title">Referral Details</h1>
-                <h2 className="detail-partner-name">{referral.name}</h2>
+            <>
+              <header className="detail-page-header">
+                <h1 className="detail-page-title">Referral Details</h1>
+                <p className="detail-page-subtitle">Full information for this referral partner.</p>
+              </header>
+
+              <div className="referral-detail-card">
+                <div className="detail-card-header">
+                  <h2 className="detail-partner-name">{referral.name}</h2>
+                  <span className="detail-service-badge">{referral.serviceName}</span>
+                </div>
+
+                <div className="detail-card-body">
+                  <dl className="detail-definition-list">
+                    <div className="detail-definition-row">
+                      <dt className="detail-label-term">Referral ID</dt>
+                      <dd className="detail-definition-desc">{referral.id}</dd>
+                    </div>
+
+                    <div className="detail-definition-row">
+                      <dt className="detail-label-term">Name</dt>
+                      <dd className="detail-definition-desc">{referral.name}</dd>
+                    </div>
+
+                    <div className="detail-definition-row">
+                      <dt className="detail-label-term">Service Name</dt>
+                      <dd className="detail-definition-desc">{referral.serviceName}</dd>
+                    </div>
+
+                    <div className="detail-definition-row">
+                      <dt className="detail-label-term">Date</dt>
+                      <dd className="detail-definition-desc">{formatReferralDate(referral.date)}</dd>
+                    </div>
+
+                    <div className="detail-definition-row">
+                      <dt className="detail-label-term">Profit</dt>
+                      <dd className="detail-definition-desc detail-value-profit">
+                        {formatReferralProfit(referral.profit)}
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
               </div>
-
-              <div className="detail-card-body">
-                <dl className="detail-definition-list">
-                  <div className="detail-definition-row">
-                    <dt className="detail-label-term">
-                      <User size={16} />
-                      <span>Referral ID</span>
-                    </dt>
-                    <dd className="detail-definition-desc">{referral.id}</dd>
-                  </div>
-
-                  <div className="detail-definition-row">
-                    <dt className="detail-label-term">
-                      <Shield size={16} />
-                      <span>Service Name</span>
-                    </dt>
-                    <dd className="detail-definition-desc">{referral.serviceName}</dd>
-                  </div>
-
-                  <div className="detail-definition-row">
-                    <dt className="detail-label-term">
-                      <Calendar size={16} />
-                      <span>Date</span>
-                    </dt>
-                    <dd className="detail-definition-desc">{formatReferralDate(referral.date)}</dd>
-                  </div>
-
-                  <div className="detail-definition-row">
-                    <dt className="detail-label-term">
-                      <DollarSign size={16} />
-                      <span>Profit</span>
-                    </dt>
-                    <dd className="detail-definition-desc value-profit">
-                      {formatReferralProfit(referral.profit)}
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
+            </>
           )}
         </div>
       </main>

@@ -973,14 +973,32 @@ td {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  color: var(--text-secondary);
+  color: var(--primary-indigo);
   font-weight: 500;
   transition: all var(--transition-fast);
 }
 
 .btn-back-dashboard:hover {
-  color: var(--primary-solid);
+  color: var(--primary-solid-hover);
   transform: translateX(-2px);
+}
+
+.detail-page-header {
+  margin-bottom: 0.25rem;
+}
+
+.detail-page-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+.detail-page-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
 }
 
 .detail-status-section {
@@ -1025,42 +1043,46 @@ td {
 }
 
 .detail-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--border-light);
   padding-bottom: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-.detail-card-main-title {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
+.detail-partner-name {
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
-  color: var(--text-primary);
+  color: #111827;
 }
 
-.detail-partner-name {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+.detail-service-badge {
+  background-color: rgba(88, 80, 236, 0.08);
+  color: var(--primary-solid);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
 }
 
 .detail-definition-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
 }
 
 .detail-definition-row {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
+  padding: 1rem 0;
   border-bottom: 1px solid var(--border-light);
 }
 
 @media (min-width: 480px) {
   .detail-definition-row {
-    flex-direction: row;
-    justify-content: space-between;
+    grid-template-columns: 180px 1fr;
+    gap: 1rem;
     align-items: center;
   }
 }
@@ -1071,10 +1093,7 @@ td {
 }
 
 .detail-label-term {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1082,23 +1101,14 @@ td {
 }
 
 .detail-definition-desc {
-  font-size: 1rem;
-  color: var(--text-primary);
-  font-weight: 500;
-  margin-top: 0.125rem;
+  font-size: 0.95rem;
+  color: #111827;
+  font-weight: 600;
 }
 
-@media (min-width: 480px) {
-  .detail-definition-desc {
-    margin-top: 0;
-  }
-}
-
-.value-profit {
+.detail-value-profit {
   font-family: var(--font-display);
-  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--color-success);
 }
 
 /* --- NotFound 404 Page Layout --- */
