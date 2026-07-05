@@ -79,6 +79,7 @@ button, input, select {
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--bg-base);
+  overflow-x: hidden;
 }
 
 /* --- Typography Utilities --- */
@@ -112,10 +113,16 @@ button, input, select {
 .navbar-container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 0.875rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  .navbar-container {
+    padding: 1rem 2rem;
+  }
 }
 
 .navbar-brand {
@@ -352,12 +359,26 @@ button, input, select {
 .app-dashboard-main {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
   animation: fadeIn 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .app-dashboard-main {
+    padding: 2rem 1.5rem;
+    gap: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-dashboard-main {
+    padding: 2.5rem 2rem;
+    gap: 2.5rem;
+  }
 }
 
 .dashboard-page-header {
@@ -603,8 +624,53 @@ button, input, select {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-light);
   border-radius: var(--border-radius-md);
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 768px) {
+  .all-referrals-table-section {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .all-referrals-table-section {
+    padding: 2rem;
+  }
+}
+
+/* Horizontal scroll container for table on small screens */
+.table-responsive-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Base table reset */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 580px;
+}
+
+th {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  padding: 0.875rem 1rem;
+  border-bottom: 2px solid var(--border-light);
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-light);
+  white-space: nowrap;
 }
 
 .referrals-table-header-controls {
@@ -641,7 +707,15 @@ button, input, select {
   position: relative;
   display: flex;
   align-items: center;
-  min-width: 240px;
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .search-filter-wrapper {
+    min-width: 240px;
+    width: auto;
+  }
 }
 
 .search-prefix-icon {
@@ -874,9 +948,15 @@ button, input, select {
 .app-detail-main {
   max-width: 640px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 1.5rem 1rem;
   width: 100%;
   animation: fadeIn 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+  .app-detail-main {
+    padding: 3rem 2rem;
+  }
 }
 
 .detail-view-container {
